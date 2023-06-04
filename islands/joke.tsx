@@ -6,7 +6,7 @@ export default function Joke() {
 
   const isOnlyTouchDevice = useMemo(() => {
     if (typeof window === "undefined") return false;
-    return "ontouchstart" in window && navigator.maxTouchPoints === 0;
+    return "ontouchstart" in window && navigator.maxTouchPoints > 0;
   }, []);
 
   const speak = useCallback(async () => {
@@ -41,7 +41,17 @@ export default function Joke() {
             Tell A Joke
           </h1>
           {isOnlyTouchDevice
-            ? <button onClick={speak} className="w-full">Joke</button>
+            ? (
+              <button
+                onClick={speak}
+                className="fixed py-2 px-4 bg-indigo-700 rounded-lg bottom-24 z-10 focus:outline-none text-white"
+                style={{
+                  width: "calc(100% - 3.25rem)",
+                }}
+              >
+                Press for a Joke
+              </button>
+            )
             : (
               <p className="text-gray-700 text-lg text-gray-100">
                 Press{" "}
@@ -56,7 +66,7 @@ export default function Joke() {
       {joke
         ? (
           <p className="text-gray-700 text-lg mt-8 px-6 sm:px-0 text-gray-700 w-full max-w-xl mx-auto">
-            <TypingEffect key={joke} text={joke} typingSpeed={36} />
+            <TypingEffect key={joke} text={joke} typingSpeed={32} />
           </p>
         )
         : null}

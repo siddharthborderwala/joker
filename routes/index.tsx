@@ -11,11 +11,7 @@ export default function Home() {
         <Joke />
         <footer>
           <p className="text-gray-700 text-sm my-4 px-6 sm:px-0 text-gray-800 font-mono w-full max-w-xl mx-auto">
-            Made with{" "}
-            <span role="img" aria-label="love">
-              ❤️
-            </span>{" "}
-            by{" "}
+            Made for fun by{" "}
             <a
               href="https://siddharthborderwala.com"
               target="_blank"
